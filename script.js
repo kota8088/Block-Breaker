@@ -84,10 +84,10 @@ function initStage() {
     for (let c = 0; c < brickColumnCount; c++) {
         bricks[c] = [];
         for (let r = 0; r < brickRowCount; r++) {
-            // 30%の確率で2〜10回当てないと壊れない頑丈なブロックにする（通常は1）
+            // 25%の確率で2〜8回当てないと壊れない頑丈なブロックにする（通常は1）
             let maxHp = 1;
-            if (Math.random() < 0.3) {
-                maxHp = Math.floor(Math.random() * 9) + 2; // 2 ~ 10
+            if (Math.random() < 0.25) {
+                maxHp = Math.floor(Math.random() * 9) + 2; // 2 ~ 8
             }
             bricks[c][r] = { x: 0, y: 0, hp: maxHp, maxHp: maxHp };
         }
@@ -112,8 +112,8 @@ function collisionDetection() {
                         localStorage.setItem("infinity_high_score", highScore);
                     }
 
-                    // ブロックが壊れたとき、25%の確率で赤い罠玉を生成
-                    if (b.hp === 0 && Math.random() < 0.25) {
+                    // ブロックが壊れたとき、20%の確率で赤い罠玉を生成
+                    if (b.hp === 0 && Math.random() < 0.20) {
                         traps.push({
                             x: b.x + brickWidth / 2,
                             y: b.y + brickHeight,
